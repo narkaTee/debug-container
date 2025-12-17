@@ -10,7 +10,11 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build-and-push:
+  build-and-test:
+    uses: ./.github/workflows/build-and-test.yml
+
+  push:
+    needs: build-and-test
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -50,5 +54,5 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           push: true
           platforms: linux/amd64,linux/arm64
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=refs/heads/main
+          cache-to: type=gha,scope=refs/heads/main,mode=max
