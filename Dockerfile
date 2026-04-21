@@ -1,4 +1,4 @@
-FROM debian:trixie@sha256:5cf544fad978371b3df255b61e209b373583cb88b733475c86e49faa15ac2104
+FROM debian:trixie@sha256:3352c2e13876c8a5c5873ef20870e1939e73cb9a3c1aeba5e3e72172a85ce9ed
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     tcpdump \
